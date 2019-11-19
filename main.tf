@@ -14,7 +14,7 @@ locals {
 }
 
 module "base_label" {
-  source              = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.13.0"
+  source              = "git::https://github.com/UnionPOS/terraform-null-label.git?ref=up"
   namespace           = var.namespace
   environment         = var.environment
   stage               = var.stage
@@ -29,7 +29,7 @@ module "base_label" {
 }
 
 module "s3_bucket_label" {
-  source  = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.13.0"
+  source  = "git::https://github.com/UnionPOS/terraform-null-label.git?ref=up"
   context = module.base_label.context
 }
 
@@ -125,7 +125,7 @@ resource "aws_s3_bucket_public_access_block" "default" {
 }
 
 module "dynamodb_table_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.13.0"
+  source     = "git::https://github.com/UnionPOS/terraform-null-label.git?ref=up"
   context    = module.base_label.context
   attributes = compact(concat(var.attributes, ["lock"]))
 }
